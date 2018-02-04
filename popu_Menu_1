@@ -1,0 +1,52 @@
+//Popup Menu
+1- Créer un dossier Menu dans le dossier Ressources
+2- Dans le dossier Menu créer un fichier menu.xml
+3- dans le fichier menu ajouter le menu suivant :
+<?xml version="1.0" encoding="utf-8" ?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  xmlns:Content=".MainActivity"
+   >
+  <item
+    android:id="@+id/menu1"
+  android:title="Nouveau"  
+      />
+  <item
+     android:id="@+id/menu2"
+  android:title="Ouvrir"
+    
+    />
+</menu>
+Ajouter un bouton à votre layout
+
+        Button b1;
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.layout1);
+          
+            // Set our view from the "main" layout resource
+            b1 = FindViewById<Button>(Resource.Id.button1);
+            b1.Click += affiche;
+
+
+        }
+
+        private void affiche(object sender, EventArgs e)
+        {
+
+            PopupMenu menu = new PopupMenu(this, b1);
+            menu.MenuInflater.Inflate(Resource.Menu.menu, menu.Menu);
+            menu.MenuItemClick += (s, arg) =>
+              {
+                  Toast.MakeText(this, arg.Item.TitleFormatted, ToastLength.Short).Show();
+              };
+            menu.Show();
+        }
+
+       
+    }
+}
