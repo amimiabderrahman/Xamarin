@@ -1,0 +1,34 @@
+//Fichier xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner1" />
+</LinearLayout>
+
+//Mainactivity
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            Spinner sp = FindViewById<Spinner>(Resource.Id.spinner1);
+            liste = new List<string>();
+            for (int i = 1; i < 20; i++)
+                liste.Add(i.ToString());
+            ArrayAdapter<string> ad = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, liste);
+            sp.Adapter = ad;
+            sp.ItemSelected+= afficher;
+
+        }
+
+        private void afficher(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            var t = liste[e.Position];
+            Toast.MakeText(this, t, ToastLength.Short).Show();
+
+        }
