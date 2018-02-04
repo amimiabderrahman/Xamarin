@@ -1,0 +1,32 @@
+// ajouter une listview à une vue 
+
+
+// fichier xml layout 
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listView1" />
+</LinearLayout>
+
+
+// ajouter le code à Main activity
+ base.OnCreate(savedInstanceState);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            ListView ls = FindViewById<ListView>(Resource.Id.listView1);
+             liste= new List<string>();
+            liste1 = new List<int>();
+            for (int i = 1; i < 20; i++)
+                liste.Add(i.ToString());
+            ArrayAdapter<string> ad = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleExpandableListItem1,liste);
+            ls.Adapter = ad;
