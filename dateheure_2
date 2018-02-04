@@ -1,0 +1,64 @@
+// Fichier xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button1" />
+</LinearLayout>
+// ajouter la classe :
+ //fragment
+    public class TimePickerFragment : DialogFragment,
+                                     TimePickerDialog.IOnTimeSetListener
+    {
+        // TAG can be any string of your choice.
+        public static readonly string TAG = "X:" + typeof(TimePickerFragment).Name.ToUpper();
+
+        // Initialize this value to prevent NullReferenceExceptions.
+        Action<string> _dateSelectedHandler = delegate { };
+
+        public static TimePickerFragment NewInstance(Action<string> OnTimeSet)
+        {
+            TimePickerFragment frag = new TimePickerFragment();
+            frag._dateSelectedHandler = OnTimeSet;
+
+            return frag;
+        }
+
+        public override Dialog OnCreateDialog(Bundle savedInstanceState)
+        {
+            DateTime currently = DateTime.Now;
+            TimePickerDialog dialog = new TimePickerDialog(Activity, this,
+                currently.Hour,
+                currently.Minute,
+                false);
+            return dialog;
+        }
+
+        public void OnTimeSet(TimePicker view, int hourOfDay, int minute)
+        {
+            // DateTime selectedDate = new DateTime(year, monthOfYear + 1, dayOfMonth);
+            //  Log.Debug(TAG, selectedDate.ToLongDateString());
+            string time = string.Format("{0}:{1}", hourOfDay, minute.ToString().PadLeft(2, '0'));
+
+            _dateSelectedHandler(time);
+        }
+    }
+    //ajouter le code dans mainactivity
+      SetContentView(Resource.Layout.Main);
+            Button b1 = FindViewById<Button>(Resource.Id.button1);
+            b1.Click += delegate
+              {
+                  TimePickerFragment frag = TimePickerFragment.NewInstance(delegate (string time)
+                  {
+                      b1.Text = time;
+                  });
+                  frag.Show(FragmentManager, TimePickerFragment.TAG);
+              };
+   
