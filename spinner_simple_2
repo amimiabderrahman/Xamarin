@@ -1,0 +1,40 @@
+//Créer un tableau dans le dossier values/string
+<string-array name="stagiaires">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+  </string-array>
+    // Ajouter un spinner à votre layout
+    <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner1" />
+</LinearLayout>
+/// ajouter le code à mainactivity :
+ Spinner sp;
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            sp = FindViewById<Spinner>(Resource.Id.spinner1);
+           
+            var ad = ArrayAdapter.CreateFromResource(this, Resource.Array.stagiaires, Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            sp.Adapter = ad;
+            sp.ItemSelected += afficher;
+        }
+
+        private void afficher(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            var t = sp.GetItemAtPosition(e.Position);
+            Toast.MakeText(this,t.ToString(), ToastLength.Short).Show();
+        }
