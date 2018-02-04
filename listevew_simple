@@ -30,3 +30,13 @@
                 liste.Add(i.ToString());
             ArrayAdapter<string> ad = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleExpandableListItem1,liste);
             ls.Adapter = ad;
+//évenement sur un item de listView
+ ls.ItemClick+= afficher;
+
+        }
+
+        private void afficher(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var t = liste[e.Position];
+            Toast.MakeText(this, t, ToastLength.Short).Show();
+        }
