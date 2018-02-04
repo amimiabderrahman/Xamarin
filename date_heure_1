@@ -1,0 +1,35 @@
+fichier xml
+  android:layout_height="match_parent">
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button1" />
+    <TextView
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+    <TextView
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+</LinearLayout>
+
+fichier Mainactivity
+ TextView tv1 = FindViewById<TextView>(Resource.Id.textView1);
+            TextView tv2 = FindViewById<TextView>(Resource.Id.textView2);
+            Button b1 = FindViewById<Button>(Resource.Id.button1);
+            //date systeme
+            DateTime f = DateTime.Now;
+            //affichage de la date systeme
+            tv1.Text = f.Day+"/"+f.Month+"/"+f.Year;
+            DateTime t = new DateTime(1963, 11, 25);
+            TimeSpan diff = f - t;
+            tv2.Text = diff.Days.ToString();
+            double age = double.Parse(tv2.Text) / 365;
+            //calcul de l'age
+            tv2.Text = age.ToString("000");
