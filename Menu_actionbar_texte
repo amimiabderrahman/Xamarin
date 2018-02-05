@@ -1,0 +1,40 @@
+// Menu texte
+Créer un fichier menu.xml dans le dossier Menu
+<?xml version="1.0" encoding="utf-8" ?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:context=".MainActivity"
+  >
+  <item
+    android:id="@+id/menu1"
+        android:title="menu1"
+    />
+
+  <item
+    android:id="@+id/menu2"
+     android:title="menu2"
+    />
+
+  <item
+   android:id="@+id/menu3"
+     android:title="menu3"
+    />
+</menu>
+Ajouter le code suivant à Mainactivity:
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            int id = item.ItemId;
+            if(id== Resource.Id.menu1)
+            {
+                Toast.MakeText(this, "salam", ToastLength.Short).Show();
+                return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
