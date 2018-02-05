@@ -1,0 +1,84 @@
+// Menu Icones
+
+l’attribut showAsAction permet de spécifier le comportement de l’élement dans une ActionBar, il peut posséder les valeurs suivantes :
+ifRoom : L’élement sera ajouté aux actions principales de l’ActionBar si une place est disponible
+never : Ne jamais rajouter l’action aux actions principales de l’ActionBar
+always : Toujours rajouter l’action aux actions principales de l’ActionBar. Cette valeur n’est pas conseillé car peut entrainer une superposition d’élement (si nombre de place disponible < nombre d'élément ajouté à l'ActionBar), préférez la valeur ifRoom.
+withText : Toujours afficher le texte représentant l’action
+
+//show actions options
+showAsAction="always"
+showAsAction="ifRoom"
+showAsAction=“never”
+
+//Créer un menu au niveau de l'action bar
+créer un fichier menu.xml dans un dossier Menu:
+xmlns:tools="http://schemas.android.com/tools"
+  tools:context=".MainActivity"
+  >
+  <item
+    android:id="@+id/search"
+    android:icon="@android:drawable/ic_menu_search"
+    android:showAsAction="always"
+    android:title="@string/action_search"
+    />
+
+  <item
+    android:id="@+id/share"
+    android:icon="@android:drawable/ic_menu_share"
+    android:showAsAction="always"
+    android:title="@string/action_share"
+    />
+
+  <item
+   android:id="@+id/email"
+   android:icon="@android:drawable/ic_dialog_email"
+   android:showAsAction="ifRoom"
+   android:title="@string/action_email"
+    />
+
+  <item
+    android:id="@+id/action1"
+    android:orderInCategory="100"
+    android:showAsAction="never"
+    android:title="@string/action_1"
+    />
+
+  <item
+   android:id="@+id/action2"
+   android:orderInCategory="101"
+   android:showAsAction="never"
+   android:title="@string/action_2"
+    />
+
+</menu>
+
+// ajouter la méthode suivante à main activity
+  public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            var inflater = MenuInflater;
+            inflater.Inflate(Resource.Menu.menu_main, menu);
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            int id = item.ItemId;
+            if (id == Resource.Id.search)
+            {
+                Toast.MakeText(this, "Search clicked", ToastLength.Short).Show();
+                return true;
+            }
+            else if (id == Resource.Id.share)
+            {
+                Toast.MakeText(this, "Share clicked", ToastLength.Short).Show();
+                return true;
+            }
+            else if (id == Resource.Id.email)
+            {
+                Toast.MakeText(this, "Email clicked", ToastLength.Short).Show();
+                return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+        
