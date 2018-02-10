@@ -1,0 +1,24 @@
+// le changement de Mainactivity
+
+ protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            Button b1 = FindViewById<Button>(Resource.Id.button1);
+            b1.Click += delegate
+              {
+
+                  Toast t = Toast.MakeText(this, "salus mes amis", ToastLength.Short);
+                  // Android.Views.GravityFlags : la gavité (position )
+                  // x : déclage horizontal
+                  //Y: Déclage vertical
+                  t.SetGravity(GravityFlags.Bottom | GravityFlags.Left, 0, 0);
+                  
+                  //t.SetGravity(Android.Views.GravityFlags.Top, 0, 100);
+                  t.Show();
+                
+              };
+           
+        }
