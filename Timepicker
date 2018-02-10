@@ -1,0 +1,53 @@
+//Le fichier Main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TimePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timePicker1" />
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button1" />
+    <TextView
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+</LinearLayout>
+//Le fichiier Mainactivity
+using System.Text;
+
+namespace App53
+{
+    [Activity(Label = "App53", MainLauncher = true)]
+    public class MainActivity : Activity
+    {
+        TimePicker tp;
+        TextView tv1;
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            tp = FindViewById<TimePicker>(Resource.Id.timePicker1);
+            tv1 = FindViewById<TextView>(Resource.Id.textView1);
+            tp.SetIs24HourView(Java.Lang.Boolean.True);
+            //afficher l'heure du systeme
+            tv1.Text = "Heure: " + tp.CurrentHour + " Minute :" + tp.CurrentMinute;
+            //Evenement
+            Button b1  = FindViewById<Button>(Resource.Id.button1);
+            b1.Click += afficher;
+        }
+
+        private void afficher(object sender, EventArgs e)
+        {
+            tv1.Text = "Heure: " + tp.CurrentHour + " Minute :" + tp.CurrentMinute;
+        }
+    }
