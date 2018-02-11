@@ -1,0 +1,24 @@
+  SetContentView(Resource.Layout.Main);
+            Button b1 = FindViewById<Button>(Resource.Id.button1);
+       tv1 = FindViewById<TextView>(Resource.Id.textView1);
+            b1.Click += afficher;
+           
+        }
+
+        private void afficher(object sender, EventArgs e)
+        {
+
+         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            dialog.SetTitle("Message");
+                       dialog.SetMessage("Taper votre code: ");
+            EditText descriptionBox = new EditText(this);
+            dialog.SetView(descriptionBox);
+         
+            dialog.SetPositiveButton("ok", delegate {
+                Toast.MakeText(this, descriptionBox.Text, ToastLength.Short).Show();
+                tv1.Text = descriptionBox.Text;
+
+            });
+   dialog.Show();
+          
+        }
