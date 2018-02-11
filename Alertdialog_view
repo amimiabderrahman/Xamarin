@@ -1,0 +1,165 @@
+Le fichier Xml : Boite.axml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="#ff80d8ff">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_marginBottom="0.0dp"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_height="25dp"
+            android:layout_width="170dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginLeft="20dp"
+            android:text="Boite de Connetion"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:typeface="sans" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_marginBottom="0.0dp">
+        <TextView
+            android:id="@+id/lblUsername"
+            android:layout_height="25dp"
+            android:layout_width="103.0dp"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginLeft="20dp"
+            android:text="Utilisateur"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:typeface="sans" />
+        <EditText
+            android:inputType="textEmailAddress"
+            android:id="@+id/txtUsername"
+            android:layout_height="28dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:hint="Le nom d'utilisateur"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColor="@android:color/black"
+            android:paddingLeft="5dp"
+            android:paddingTop="1dp"
+            android:textSize="14dp"
+            android:paddingBottom="1dp"
+            android:typeface="sans"
+            android:layout_marginRight="20dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3">
+        <TextView
+            android:id="@+id/lblUsername"
+            android:layout_height="25dp"
+            android:layout_width="102.0dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginLeft="20dp"
+            android:text="Utilisateur"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:typeface="sans" />
+        <EditText
+            android:inputType="textEmailAddress"
+            android:id="@+id/txtUsername"
+            android:layout_height="28dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:hint="Mot de passe"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColor="@android:color/black"
+            android:paddingLeft="5dp"
+            android:paddingTop="1dp"
+            android:textSize="14dp"
+            android:paddingBottom="1dp"
+            android:typeface="sans"
+            android:layout_marginRight="20dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout4"
+        android:layout_marginLeft="25dp">
+        <Button
+            android:id="@+id/btnLoginLL"
+            android:layout_width="125dp"
+            android:layout_height="35dp"
+            android:textSize="14dp"
+            android:text="Se Conneter"
+            android:typeface="sans"
+            android:background="#ff0986be"
+            android:textColor="#ffffffff"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="0.0dp"
+            android:layout_marginRight="0.0dp" />
+        <Button
+            android:id="@+id/btnClearLL"
+            android:layout_width="125dp"
+            android:layout_height="35dp"
+            android:textSize="14dp"
+            android:text="Annuler"
+            android:typeface="sans"
+            android:background="#ff0986be"
+            android:layout_marginLeft="25dp"
+            android:textColor="#ffffffff"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="5dp" />
+    </LinearLayout>
+</LinearLayout>
+//Le code MainActivity.cs
+ protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            Button b1 = FindViewById<Button>(Resource.Id.button1);
+      
+            b1.Click += afficher;
+           
+        }
+
+        private void afficher(object sender, EventArgs e)
+        {
+
+            View view = LayoutInflater.Inflate(Resource.Layout.boite, null);
+            AlertDialog builder = new AlertDialog.Builder(this).Create();
+            builder.SetView(view);
+            builder.SetCanceledOnTouchOutside(false);
+            Button button = view.FindViewById<Button>(Resource.Id.btnClearLL);
+            button.Click += delegate {
+                builder.Dismiss();
+                Toast.MakeText(this, "Alert dialog dismissed!", ToastLength.Short).Show();
+            };
+            builder.Show();
+        }
