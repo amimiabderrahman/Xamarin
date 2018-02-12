@@ -1,0 +1,13 @@
+//création d'une   Notification.Builder
+            Notification.Builder nb = new Notification.Builder(this);
+            nb.SetContentTitle("Message");
+            nb.SetSmallIcon(Resource.Drawable.prof);
+            nb.SetContentText("Salut mes amis");
+            
+            nb.SetDefaults(NotificationDefaults.All);
+           
+            // créer une notification nb et la relier à  Notification.Builder 
+            Notification not = nb.Build();
+            // créer un notification Manager
+            NotificationManager nm = GetSystemService(Context.NotificationService) as NotificationManager;
+            nm.Notify(1, not);
