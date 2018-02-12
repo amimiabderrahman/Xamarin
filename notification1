@@ -12,6 +12,8 @@
             nb.SetContentTitle("Message");
             nb.SetSmallIcon(Resource.Drawable.prof);
             nb.SetContentText("Salut mes amis");
+            
+           
             // créer une notification nb et la relier à  Notification.Builder 
             Notification not = nb.Build();
             // créer un notification Manager
