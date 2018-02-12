@@ -11,3 +11,8 @@
             // créer un notification Manager
             NotificationManager nm = GetSystemService(Context.NotificationService) as NotificationManager;
             nm.Notify(1, not);
+// Les valeurs de NotificationDefaults sont :
+.All
+.Lights
+.Sound
+.Vibrate
