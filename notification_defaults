@@ -16,3 +16,6 @@
 .Lights
 .Sound
 .Vibrate
+
+// on peut utiliser les deux:
+ nb.SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate);
