@@ -1,0 +1,8 @@
+// créer un dossier raw dans ressources
+//copier vos fichier audio dans ce dossier (*.mp3)
+dans mainactivity ajouter le code
+ var pathToPushSound = "android.resource://" + this.ApplicationContext.PackageName + "/raw/habib";
+            var soundUri = Android.Net.Uri.Parse(pathToPushSound);
+            MediaPlayer _player;
+            _player = MediaPlayer.Create(this, soundUri);
+            _player.Start();
