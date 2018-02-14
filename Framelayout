@@ -1,0 +1,48 @@
+// Fichier main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/framelayout">
+    <ImageView
+        android:id="@+id/frameImage"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:src="@drawable/image1"
+        android:layout_gravity="center"
+        android:clickable="true" />
+    <TextView
+        android:id="@+id/frameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is a text"
+        android:textSize="35sp"
+        android:visibility="gone"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+</FrameLayout>
+// Fichier mainactivity
+  SetContentView(Resource.Layout.Main);
+            FrameLayout fl = FindViewById<FrameLayout>(Resource.Id.framelayout);
+            ImageView imgv = FindViewById<ImageView>(Resource.Id.frameImage);
+            TextView tv = FindViewById<TextView>(Resource.Id.frameText);
+           imgv.Click += delegate
+              {
+                
+                  TextView tv1 = new TextView(this);
+                  //Texte
+                  tv1.Text = "Salut mes cam";
+                  //couleur
+                 tv1.SetTextColor(Android.Graphics.Color.Red);
+                  //afficher
+                    tv.Visibility = ViewStates.Visible;
+                  //back
+                  tv1.SetBackgroundColor(Android.Graphics.Color.White);
+
+                  tv1.SetTextSize(Android.Util.ComplexUnitType.Sp, 25);
+
+                  fl.AddView(tv1);
+             
+                  
+
+              };
