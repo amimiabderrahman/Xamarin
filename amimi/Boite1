@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:background="@android:color/holo_orange_dark">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <TextView
+                android:text="Boite de Connexion"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="0"
+                android:id="@+id/textView10"
+                android:layout_weight="1"
+                android:layout_width="241.5dp"
+                android:layout_span="3"
+                android:gravity="center" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2">
+            <TextView
+                android:text="Utilisateur"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_column="0"
+                android:id="@+id/textView11"
+                android:layout_weight="1" />
+            <EditText
+                android:inputType="textPersonName"
+                android:layout_column="1"
+                android:id="@+id/editText1"
+                android:layout_weight="1"
+                android:layout_width="129.5dp" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow3">
+            <TextView
+                android:text="Mot de passe"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_column="0"
+                android:id="@+id/textView12"
+                android:layout_weight="1"
+                android:layout_marginRight="17.0dp" />
+            <EditText
+                android:inputType="textPassword"
+                android:layout_column="1"
+                android:id="@+id/editText2"
+                android:layout_weight="1"
+                android:layout_marginRight="0.0dp"
+                android:layout_width="133.5dp" />
+        </TableRow>
+        <TableRow>
+            <Button
+                android:text="Button"
+                android:layout_column="0"
+                android:id="@+id/button1"
+                android:layout_width="70dp"
+                android:layout_weight="1"
+                android:layout_marginRight="1.0dp" />
+            <Button
+                android:text="Button"
+                android:layout_column="1"
+                android:id="@+id/button2"
+                android:layout_marginRight="0.0dp"
+                android:layout_width="70.0dp"
+                android:layout_marginLeft="0.0dp"
+                android:layout_weight="1" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
