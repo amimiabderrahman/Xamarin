@@ -1,0 +1,40 @@
+//fichier main.axml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button1" />
+    <TextView
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+    <TextView
+        android:text="salut mes amis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+</LinearLayout>
+//fichier styles.xml
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="mon_style" >
+        <item name="android:textColor" >#FFFFFF</item>
+      <item name="android:textSize" >30dp</item>
+    <item name="android:textStyle" >bold</item>
+    <item name="android:background">#FF0025</item>
+  </style>
+</resources>
+//application du theme pour l'application
+	<application android:allowBackup="true" android:label="@string/app_name" android:theme="@style/mon_style"></application>
+//application du theme pour l'activité
+[Activity(Label = "App3", MainLauncher = true, Theme="@style/mon_style")]
+  
