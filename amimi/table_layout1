@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/tableLayout1"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp"
+    android:background="@android:color/holo_blue_bright">
+    <TableRow
+        android:id="@+id/tableRow1">
+        <TextView
+            android:text="Boite de connexion"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_column="0"
+            android:id="@+id/textView10"
+            android:layout_span="3"
+            android:gravity="center"
+            android:layout_width="match_parent" />
+    </TableRow>
+    <View
+        android:layout_height="5dp"
+        android:background="#ed8404" />
+    <Space
+        android:id="@+id/xx"
+        android:layout_height="10dp" />
+    <TableRow
+        android:id="@+id/tableRow2">
+        <TextView
+            android:text="Utilisateur"
+            android:layout_column="0"
+            android:id="@+id/textView11"
+            android:textColor="@android:color/black" />
+        <EditText
+            android:inputType="textPersonName"
+            android:layout_column="1"
+            android:id="@+id/editText2"
+            android:layout_width="139.0dp"
+            android:background="@android:color/darker_gray" />
+    </TableRow>
+    <Space
+        android:id="@+id/xx"
+        android:layout_height="10dp" />
+    <TableRow
+        android:id="@+id/tableRow3">
+        <TextView
+            android:text="Mot de passe:"
+            android:layout_column="0"
+            android:id="@+id/textView12"
+            android:textColor="@android:color/black" />
+        <EditText
+            android:inputType="textPassword"
+            android:layout_column="1"
+            android:id="@+id/editText1"
+            android:layout_marginRight="0.0dp"
+            android:layout_width="161.5dp"
+            android:background="@android:color/darker_gray" />
+    </TableRow>
+    <Space
+        android:id="@+id/xx"
+        android:layout_height="10dp" />
+    <TableRow>
+        <Button
+            android:text="Se connecter"
+            android:layout_column="0"
+            android:id="@+id/button1"
+            android:layout_marginLeft="45dp" />
+        <Button
+            android:text="Quitter"
+            android:layout_column="1"
+            android:id="@+id/button2"
+            android:layout_marginLeft="30dp" />
+    </TableRow>
+</TableLayout>
