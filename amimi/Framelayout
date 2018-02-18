@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frameLayout1">
+    <ImageView
+        android:src="@drawable/logo_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView1" />
+    <TextView
+        android:text="Salut mes amis"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textView1"
+        android:textColor="@android:color/holo_blue_bright"
+        android:gravity="center" />
+    <TextView
+        android:text="Salut mes amis"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textView1"
+        android:textColor="@android:color/holo_blue_bright"
+        android:gravity="bottom|reight" />
+</FrameLayout>
