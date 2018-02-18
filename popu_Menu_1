@@ -44,6 +44,10 @@ Ajouter un bouton à votre layout
               {
                   Toast.MakeText(this, arg.Item.TitleFormatted, ToastLength.Short).Show();
               };
+              menu.DismissEvent+= (s, arg) =>
+            {
+                Toast.MakeText(this, "bay", ToastLength.Short).Show();
+            };
             menu.Show();
         }
 
