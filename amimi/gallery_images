@@ -1,0 +1,27 @@
+//ajouter des images dans drawable
+//ajouter le code suivant à mainactivity
+ SetContentView(Resource.Layout.Main);
+            int[] t =
+            {
+                Resource.Drawable.tl1,
+                Resource.Drawable.tl2,
+                Resource.Drawable.tl3,
+                Resource.Drawable.tl4
+
+            };
+           ImageView img = FindViewById<ImageView>(Resource.Id.imageView1);
+        
+            int i = 0;
+            img.Click+= delegate
+              {
+                  if (i >= 0 && i < t.Length)
+                  {
+                      img.SetImageResource(t[i]);
+                      i++;
+                  }
+                  else
+                      i = 0;
+                  
+                 
+
+              };
