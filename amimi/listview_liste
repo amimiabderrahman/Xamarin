@@ -1,0 +1,70 @@
+//créer la classe personne.cs
+ class Personne
+    {
+        string nom, prenom;
+        public Personne(string nom,string prenom)
+        {
+            this.nom = nom;
+            this.prenom = prenom;
+        }
+    }
+    //créer la classe adaptateur.cs
+     class adaptateur : BaseAdapter
+    {
+        List<Personne> liste;
+        Activity content;
+        public adaptateur(Activity content, List<Personne> liste)
+        {
+            this.content = content;
+            this.liste = liste;
+
+        }
+        public override int Count => liste.Count;
+
+        public override Java.Lang.Object GetItem(int position)
+        {
+            return position;
+        }
+
+        public override long GetItemId(int position)
+        {
+            return position;
+        }
+
+        public override View GetView(int position, View convertView, ViewGroup parent)
+        {
+            var t = liste[position];
+            View v = convertView;
+            v = content.LayoutInflater.Inflate(Resource.Layout.layout1,null);
+            v.FindViewById<TextView>(Resource.Id.textView1).Text = t.nom;
+            v.FindViewById<TextView>(Resource.Id.textView2).Text = t.prenom;
+            return v;
+
+
+        }
+        //code de main activity
+         List<Personne> liste;
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            ListView ls = FindViewById<ListView>(Resource.Id.listView1);
+            liste = new List<Personne>();
+            liste.Add(new Personne("a", "b"));
+            liste.Add(new Personne("a", "b"));
+            liste.Add(new Personne("a", "b"));
+            liste.Add(new Personne("a", "b"));
+            liste.Add(new Personne("a", "b"));
+            ls.Adapter = new adaptateur(this, liste);
+
+        ls.ItemClick += afficher;
+        }
+
+        private void afficher(object sender, AdapterView.ItemClickEventArgs e)
+        {
+                       var t = liste[e.Position];
+            Toast.MakeText(this, t.ToString(), ToastLength.Short).Show();
+        }
+        
