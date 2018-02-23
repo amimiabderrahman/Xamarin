@@ -1,0 +1,82 @@
+
+////créer une vue à partager: layout1.axml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+    <TextView
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+    
+</LinearLayout>
+//Créer deux tableaux dans string.xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">App88</string>
+  <string-array name="nom">
+    <item>a</item>
+  <item>a</item>
+<item>a</item>
+<item>a</item>
+<item>a</item>
+  </string-array>
+<string-array name="prenom">
+    <item>b</item>
+  <item>b</item>
+<item>b</item>
+<item>b</item>
+<item>b</item>
+  </string-array>
+</resources>
+//créer un adaptateur:adaptateur.cs
+class adaptateur : BaseAdapter
+    {
+        ArrayList liste = new ArrayList();
+        Activity content;
+        public adaptateur(Activity c, ArrayList liste)
+        {
+            this.content = c;
+            this.liste = liste;
+        }
+        public override int Count => liste.Count;
+
+        public override Java.Lang.Object GetItem(int position)
+        {
+            return position;
+        }
+
+        public override long GetItemId(int position)
+        {
+            return position;
+        }
+
+        public override View GetView(int position, View convertView, ViewGroup parent)
+        {
+            var p =liste[position] as personne;
+            View v = convertView;
+             v  = content.LayoutInflater.Inflate(Resource.Layout.layout1, null);
+            v.FindViewById<TextView>(Resource.Id.textView1).Text = p.nom;
+            v.FindViewById<TextView>(Resource.Id.textView2).Text = p.prenom;
+            return v;
+        }
+    }
+}
+// code de mainctivity
+ ListView ls = FindViewById<ListView>(Resource.Id.listView1);
+            liste = new ArrayList();
+            string[] nom = Resources.GetStringArray(Resource.Array.nom);
+            string[] prenom = Resources.GetStringArray(Resource.Array.prenom);
+            for (int i = 0; i < nom.Length; i++)
+                liste.Add(new personne(nom[i], prenom[i]));
+            ls.Adapter = new adaptateur(this, liste);
+
