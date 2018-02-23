@@ -38,6 +38,16 @@
 <item>b</item>
   </string-array>
 </resources>
+//créer la classe personne.cs
+ class personne
+    {
+        public string nom, prenom;
+        public personne(string nom,string prenom)
+        {
+            this.nom = nom;
+            this.prenom = prenom;
+        }
+    }
 //créer un adaptateur:adaptateur.cs
 class adaptateur : BaseAdapter
     {
