@@ -1,0 +1,41 @@
+Intent Explicite:
+//code de mainactivity
+ protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            Button b1 = FindViewById<Button>(Resource.Id.button1);
+            b1.Click += afficher;
+           ed1 = FindViewById<EditText>(Resource.Id.editText1);
+
+        }
+
+        private void afficher(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(activite_layout1));
+            intent.PutExtra("nom", ed1.Text);
+            intent.PutExtra("age", 25);
+            intent.PutExtra("date", "25 / 01 / 2017");
+            StartActivity(intent);
+        }
+        //code de layout1activity
+          protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.layout1);
+            // Create your application here
+            TextView tv1 = FindViewById<TextView>(Resource.Id.textView1);
+            string x = Intent.GetStringExtra("nom");
+            int y = Intent.GetIntExtra("age",0);
+            tv1.Text = y.ToString();
+           
+            Button b1 = FindViewById<Button>(Resource.Id.button1);
+            b1.Click += fermer;
+        }
+
+        private void fermer(object sender, EventArgs e)
+        {
+            this.Finish();
+        }
