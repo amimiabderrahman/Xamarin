@@ -5,7 +5,9 @@
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
-           View v = inflater.Inflate(Resource.Layout.layout1, container, false);
+            View v = inflater.Inflate(Resource.Layout.layout1, container, false);
+            Button b = v.FindViewById<Button>(Resource.Id.button1);
+            b.Click += delegate { Toast.MakeText(Activity, "salut mes amis", ToastLength.Short).Show(); };
             return v;
         }
     }
