@@ -1,0 +1,46 @@
+//créer une layout 1
+//créer une layout 2
+//créer une layout 3
+//créer des classes dérivé de la classe Frgment qui contient la méthode :
+ public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+         base.OnCreateView(inflater, container, savedInstanceState);
+            View v = inflater.Inflate(Resource.Layout.layout1, container, false);
+            return v;
+        }
+       Modifier la vue main.axml
+       <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <fragment
+            class="App99.frag1"
+            android:id="@+id/frag1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <fragment
+            class="App99.frag2"
+            android:id="@+id/frag2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <fragment
+        class="App99.frag3"
+        android:id="@+id/frag3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+remarque : App9: Le nom du projet 
+frag1: le nom de la classe.
