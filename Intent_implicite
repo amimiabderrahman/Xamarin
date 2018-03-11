@@ -1,0 +1,21 @@
+//afficher une page Web
+b1.Click += delegate {
+                Intent i = new Intent(Intent.ActionView, Android.Net.Uri.Parse("http://www.vogella.com"));
+                StartActivity(i);
+                };
+                //Demarre le numérateur de telephone
+ var uri = Android.Net.Uri.Parse("tel:1112223333");
+                 var intent = new Intent(Intent.ActionDial, uri);
+                 StartActivity(intent);
+ 
+ ///afficher le gestionnaire de telephone
+  var geouri = Android.Net.Uri.Parse("content://contacts/people/2");
+                var i = new Intent(Intent.ActionView, geouri);
+
+                StartActivity(i);
+    //envoyer un messsage 
+      var geouri = Android.Net.Uri.Parse("sms:0618325258");
+                var i = new Intent(Intent.ActionView, geouri);
+                StartActivity(i);
+                
+ 
