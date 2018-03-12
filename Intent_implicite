@@ -17,5 +17,9 @@ b1.Click += delegate {
       var geouri = Android.Net.Uri.Parse("sms:0618325258");
                 var i = new Intent(Intent.ActionView, geouri);
                 StartActivity(i);
-                
- 
+  // Map              
+  var geoUri = Android.Net.Uri.Parse ("geo:42.374260,-71.120824");
+       var mapIntent = new Intent (Intent.ActionView, geoUri);
+       StartActivity (mapIntent);
+    
+    
