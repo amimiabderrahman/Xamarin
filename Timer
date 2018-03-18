@@ -1,0 +1,51 @@
+using Android.App;
+using Android.Widget;
+using Android.OS;
+using System.Timers;
+using System;
+
+namespace timers
+{
+    
+    [Activity(Label = "timers", MainLauncher = true)]
+    public class MainActivity : Activity
+    {
+        int c = 1;
+        TextView tv1;
+        Timer t;
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.Main);
+            Button b1 = FindViewById<Button>(Resource.Id.button1);
+            Button b2 = FindViewById<Button>(Resource.Id.button2);
+            tv1 = FindViewById<TextView>(Resource.Id.textView1);
+            // Set our view from the "main" layout resource
+           
+            t = new Timer();
+            t.Interval = 3000;
+            t.Elapsed+= new ElapsedEventHandler(afficher);
+            b1.Click += delegate
+            {
+ t.Start();
+            };
+            b2.Click += delegate
+            {
+                t.Stop();
+            };
+
+        }
+
+        protected void afficher(object sender, ElapsedEventArgs e)
+        {
+            // RunOnUiThread permet d'arriver aux element d'une vue car le timer ne peut pas arriver seul
+            RunOnUiThread(() =>
+            tv1.Text = c.ToString()
+
+            );
+            c++;
+            throw new NotImplementedException();
+        }
+    }
+}
+
