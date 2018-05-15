@@ -1,0 +1,117 @@
+Ajouter sqliteNetExtension
+Ajouter mon.data.sqlite
+ajouter les directives :
+system.io
+mono.data.sqlite
+
+
+using System.IO;
+using Mono.Data.Sqlite;
+
+namespace App156
+{
+    [Activity(Label = "App156", MainLauncher = true)]
+    public class MainActivity : Activity
+    {
+        EditText ed1, ed2;
+        TextView tv1,tv2;
+        SQLiteConnection db;
+        string pathdb;
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            Button b1 = FindViewById<Button>(Resource.Id.button1);
+            Button b2 = FindViewById<Button>(Resource.Id.button2);
+            Button b3 = FindViewById<Button>(Resource.Id.button3);
+            tv1 = FindViewById<TextView>(Resource.Id.textView1);
+            tv2 = FindViewById<TextView>(Resource.Id.textView1);
+            ed1 = FindViewById<EditText>(Resource.Id.editText1);
+            ed2 = FindViewById<EditText>(Resource.Id.editText2);
+            b1.Click += afficher;
+            var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            pathdb = Path.Combine(path, "stagiaires.db3");
+           
+                b2.Click += affiche;
+            b3.Click += lister;
+        }
+
+        private void lister(object sender, EventArgs e)
+        {
+            var gPath = "data source=\"" + pathdb + "\"";
+            SqliteConnection con = new SqliteConnection(gPath);
+                    con.Open();
+                        string req = "SELECT nu FROM stagiaire";
+            SqliteCommand cmd = new SqliteCommand(req, con);
+            SqliteDataReader dr = cmd.ExecuteReader();
+            tv1.Text = string.Empty;
+            while (dr.Read())
+            {
+                tv1.Text = dr[0].ToString() + dr[1].ToString() + dr[2].ToString()+"amimi";
+            }
+
+        }
+
+        private void affiche(object sender, EventArgs e)
+        {
+            var liste = db.Table<Stagiaire>();
+            tv1.Text = string.Empty;
+            foreach (var x in liste)
+                tv1.Text += x.ToString() + "\n";
+        }
+
+        private void afficher(object sender, EventArgs e)
+        {
+
+            Stagiaire s = new Stagiaire();
+            s.nom = ed1.Text;
+            s.prenom = ed2.Text;
+            db.Insert(s);
+            effacer();
+        }
+        public void effacer()
+        {
+            ed1.Text = string.Empty;
+            ed2.Text = string.Empty;
+        }
+        
+    }
+}
+
+
+
+[Table("stagiaire")]
+    class Stagiaire
+    {  [PrimaryKey ,AutoIncrement]
+        public int num { get; set; }
+        public string nom { get; set; }
+        public string prenom { get; set; }
+        public override string ToString()
+        {
+            return num + " " + nom + " " + prenom;
+        }
+
+    }
+    [Table("module")]
+    class module
+    {
+        [PrimaryKey, AutoIncrement]
+        public int code { get; set; }
+        
+        public int MH { get; set; }
+            }
+
+    [Table("Formation")]
+    class Formation
+    {
+        [ForeignKey(typeof(Stagiaire))]
+        public int num { get; set; }
+        [ForeignKey(typeof(module))]
+        public int code { get; set; }
+    }
+}
+
+
+
